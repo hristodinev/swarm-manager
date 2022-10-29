@@ -1,0 +1,21 @@
+version: '3'
+services:
+    web:
+        build: .
+        image: hristodinev123/docker-web
+        restart: always
+        ports:
+            - 80:8080
+        networks:
+            - app_network
+        depends_on:
+            - db
+
+    db:
+      build: .
+      image: hristodinev123/docker-db
+      restart: always
+      ports:
+      - '3306:3306'
+      networks:
+            - app_network   
