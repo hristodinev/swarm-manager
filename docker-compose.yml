@@ -15,11 +15,17 @@ services:
       build: .
       image: hristodinev123/docker-db
       restart: always
+      environment:
+            MYSQL_ROOT_PASSWORD: 12345
       ports:
       - '3306:3306'
+      volumes:
+      - db:/var/lib/mysql
       networks:
             - app_network
-
+volumes:
+  db:
+    driver: local
 networks: 
     app_network:
 
